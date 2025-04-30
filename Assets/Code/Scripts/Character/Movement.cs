@@ -2,69 +2,68 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Movement : MonoBehaviour
+public class Movement
 {
     private Vector2 _inputDirection;
-    private CharacterController _controller;
-    private float _speed = 0f;
+    private CharacterController _characterController;
+    private float _speed = 5f;
     private bool _isGrounded;
     private bool _isRunning;
     private float _stamina = 0f;
     
-    [Header("MovementSpeed")]
-    [SerializeField] private float walkSpeed;
-    [SerializeField] private float runSpeed;
+
+    private float walkSpeed = 5f;
+    private float runSpeed = 10f;
     
-    [Header("Jump")]
-    [SerializeField] private float jumpHeight;
-    [SerializeField] private float gravity;
+    private float jumpHeight = 2;
+    private float gravity = -20;
+    
      private float _verticalVelocity;
+     private Transform _playerTransform;
+
+     public Movement(CharacterController characterController, Transform playerTransform)
+     {
+         _characterController = characterController;
+         _playerTransform = playerTransform;
+     }
+     
+    public void SetPlayerController(CharacterController controller)
+    {
+        _characterController = controller;
+    }
     
+    public void SetInputDirection(Vector2  value)
+    {
+        _inputDirection = value;
+    }
     
 
-    private void Start()
+    public void SetSprint(bool  value)
     {
-        _controller = GetComponentInChildren<CharacterController>();
-        _speed = walkSpeed;
-    }
-
-    public void OnMove(InputValue value)
-    {
-        _inputDirection = value.Get<Vector2>();
-    }
-
-    public void Update()
-    {   
-        CheckedGrounded();
-        MovementUpdate();
-    }
-
-    public void OnSprint(InputValue value)
-    {
-        _isRunning = value.isPressed;
+        _isRunning = value;
         if (_isRunning) _speed = runSpeed;
         else _speed = walkSpeed;
     }
 
-    public void OnJump(InputValue value)
+    public void SetJump(bool value)
     {
-        if (value.isPressed && _controller.isGrounded)
+        if (value && _characterController.isGrounded)
         {
             _verticalVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
         }
     }
 
-    private void CheckedGrounded()
+    public void CheckedGrounded()
     {
-        if (_controller.isGrounded && _verticalVelocity < 0f)
+        if (_characterController.isGrounded && _verticalVelocity < 0f)
         {
             _verticalVelocity = -2f;
         }
     }
 
-    private void MovementUpdate()
+    public void MovementUpdate()
     {
-        Vector3 dir = transform.right * _inputDirection.x + transform.forward * _inputDirection.y;
+        Vector3 dir = _playerTransform.right * _inputDirection.x + _playerTransform.forward * _inputDirection.y;
         if (dir.sqrMagnitude > 1f) dir.Normalize();
         
         Vector3 move = dir * _speed;
@@ -72,7 +71,7 @@ public class Movement : MonoBehaviour
         _verticalVelocity += gravity * Time.deltaTime;
         move.y = _verticalVelocity;
         
-        _controller.Move(move * Time.deltaTime);
+        _characterController.Move(move * Time.deltaTime);
     }
     
     
