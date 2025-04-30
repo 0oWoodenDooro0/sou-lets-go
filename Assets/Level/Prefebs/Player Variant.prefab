@@ -14,15 +14,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1971174448892701263, guid: b894911ddb3010e44a6b58f96a2ce96e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.097545385
+      value: -11.662161
       objectReference: {fileID: 0}
     - target: {fileID: 1971174448892701263, guid: b894911ddb3010e44a6b58f96a2ce96e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.85777426
+      value: 11.565
       objectReference: {fileID: 0}
     - target: {fileID: 1971174448892701263, guid: b894911ddb3010e44a6b58f96a2ce96e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.0370282
+      value: 3.5171697
       objectReference: {fileID: 0}
     - target: {fileID: 1971174448892701263, guid: b894911ddb3010e44a6b58f96a2ce96e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -61,10 +61,7 @@ PrefabInstance:
       addedObject: {fileID: 5336235616053454196}
     - targetCorrespondingSourceObject: {fileID: 1764798936944323596, guid: b894911ddb3010e44a6b58f96a2ce96e, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6948804923153658701}
-    - targetCorrespondingSourceObject: {fileID: 1764798936944323596, guid: b894911ddb3010e44a6b58f96a2ce96e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6398461956857050519}
+      addedObject: {fileID: 8984794462213931957}
   m_SourcePrefab: {fileID: 100100000, guid: b894911ddb3010e44a6b58f96a2ce96e, type: 3}
 --- !u!1 &6655946694565058816 stripped
 GameObject:
@@ -101,7 +98,7 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &6948804923153658701
+--- !u!114 &8984794462213931957
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,23 +107,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 6655946694565058816}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87c67e84ca8898c42b9857b47774da41, type: 3}
+  m_Script: {fileID: 11500000, guid: d905b370424657c48bb3fb6d3f2dc977, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 5
-  runSpeed: 10
-  jumpHeight: 2
-  gravity: -20
---- !u!114 &6398461956857050519
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6655946694565058816}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e49465e99bfc304a81cb7e1784453f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sensitivity: 10
