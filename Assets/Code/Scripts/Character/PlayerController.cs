@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -40,7 +39,8 @@ namespace Code.Scripts.Character
 
         public Vector3 GetCameraPosition()
         {
-            return _characterController.transform.position + new Vector3(0f, 0.7f, 0f) + _characterController.transform.forward * 0.4f;
+            return _characterController.transform.position + new Vector3(0f, 0.7f, 0f) +
+                   _characterController.transform.forward * 0.4f;
         }
 
         public Quaternion GetCameraLookAtDirection()

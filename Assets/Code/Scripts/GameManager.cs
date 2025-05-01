@@ -27,8 +27,13 @@ namespace Code.Scripts
             _inputHandler.Update();
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
-            playerCamera.transform.position = _playerController.GetCameraPosition();
-            playerCamera.transform.rotation = _playerController.GetCameraLookAtDirection();
+            CameraUpdate(_playerController);
+        }
+
+        private void CameraUpdate(ICameraTargetInfo target)
+        {
+            playerCamera.transform.position = target.GetCameraPosition();
+            playerCamera.transform.rotation = target.GetCameraLookAtDirection();
         }
     }
 }
