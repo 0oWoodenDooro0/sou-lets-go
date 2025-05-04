@@ -7,10 +7,12 @@ namespace Code.Scripts.Character
         private Transform _transform;
         private Vector2 _playerInput;
         private float _sensitivity = 20;
+        private Transform _cameraTransform;
 
-        public PlayerLook(Transform transform)
+        public PlayerLook(Transform transform, Transform cameraTransform)
         {
             _transform = transform;
+            _cameraTransform = cameraTransform;
         }
 
         public void Look(Vector2 direction)
@@ -22,11 +24,7 @@ namespace Code.Scripts.Character
             _playerInput.y -= mouseY;
 
             _transform.localRotation = Quaternion.Euler(0f, _playerInput.x, 0f);
-        }
-
-        public Quaternion GetCameraDirection()
-        {
-            return Quaternion.Euler(_playerInput.y, _playerInput.x, 0f);
+            _cameraTransform.localRotation = Quaternion.Euler(_playerInput.y, 0f, 0f);
         }
     }
 }

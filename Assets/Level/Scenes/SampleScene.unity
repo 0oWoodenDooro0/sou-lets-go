@@ -370,8 +370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5014463ecc034544be1c0ea3b2ddd2e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 6655946694565058816, guid: 02bf0933c3e4336488ad06d6090de6a3, type: 3}
-  playerCamera: {fileID: 1780309192}
+  playerPrefab: {fileID: 1764798936944323596, guid: b894911ddb3010e44a6b58f96a2ce96e, type: 3}
 --- !u!114 &1725781111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -415,7 +414,7 @@ GameObject:
   - component: {fileID: 1780309193}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -488,7 +487,7 @@ Transform:
   m_GameObject: {fileID: 1780309192}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.6515353, y: 4.0454893, z: -3.4120498}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -6,7 +6,7 @@ namespace Code.Scripts
     public class GameManager : MonoBehaviour
     {
         [SerializeField] private GameObject playerPrefab;
-        [SerializeField] private GameObject playerCamera;
+        private Camera _camera;
         private InputHandler _inputHandler;
         private PlayerController _playerController;
 
@@ -16,6 +16,7 @@ namespace Code.Scripts
 
         private void Start()
         {
+            _camera = Camera.main;
             var inputState = gameObject.AddComponent<InputState>();
             _playerController = new PlayerController(playerPrefab);
             _playerController.Spawn(new Vector3(0, 1, 0));
@@ -32,8 +33,7 @@ namespace Code.Scripts
 
         private void CameraUpdate(ICameraTargetInfo target)
         {
-            playerCamera.transform.position = target.GetCameraPosition();
-            playerCamera.transform.rotation = target.GetCameraLookAtDirection();
+            _camera.transform.SetPositionAndRotation(target.GetCameraPosition(), target.GetCameraRotation());
         }
     }
 }

@@ -7,9 +7,9 @@ namespace Code.Scripts.Character
     {
         private PlayerMovement _playerMovement;
         private PlayerLook _playerLook;
-        private CharacterController _characterController;
         private GameObject _playerPrefab;
         private bool _playerExist;
+        private Transform _cameraTransform;
 
         public PlayerController(GameObject playerPrefab)
         {
@@ -21,10 +21,12 @@ namespace Code.Scripts.Character
             if (_playerExist) return;
             _playerExist = true;
             var instance = Object.Instantiate(_playerPrefab, position, Quaternion.identity);
-            _characterController = instance.GetComponent<CharacterController>();
+            var characterController = instance.GetComponent<CharacterController>();
+            _cameraTransform = instance.transform.Find("CameraPoint");
+            // 25/05/04, user, todo: 應該有更好的方法
             var transform = instance.transform;
-            _playerMovement = new PlayerMovement(transform, _characterController);
-            _playerLook = new PlayerLook(transform);
+            _playerMovement = new PlayerMovement(transform, characterController);
+            _playerLook = new PlayerLook(transform, _cameraTransform);
         }
 
         public void OnMove(InputState inputState)
@@ -39,13 +41,12 @@ namespace Code.Scripts.Character
 
         public Vector3 GetCameraPosition()
         {
-            return _characterController.transform.position + new Vector3(0f, 0.7f, 0f) +
-                   _characterController.transform.forward * 0.4f;
+            return _cameraTransform.position;
         }
 
-        public Quaternion GetCameraLookAtDirection()
+        public Quaternion GetCameraRotation()
         {
-            return _playerLook.GetCameraDirection();
+            return _cameraTransform.rotation;
         }
     }
 }
